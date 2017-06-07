@@ -3,7 +3,11 @@ import React, { Component } from 'react';
 export default class App extends Component {
   render() {
     return (
-      <div>File Uploader........</div>
+      <div>
+        {
+          this.props.children;
+        }
+      </div>
     );
   }
 }
