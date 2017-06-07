@@ -1,0 +1,17 @@
+#progress-bar-wrapper {
+  max-width: 90px;
+  width: 80%;
+  border-radius: 100px;
+  margin: 6px auto 0;
+  background-color: #e8e8ed;
+
+  #progress-bar {
+    width: 1%;
+    height: 4px;
+    border-radius: 100px;
+    background-color: #7176db;
+  }
+
+  .progress-complete { background-color: #2cb79d !important; }
+}
+

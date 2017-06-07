@@ -12,8 +12,6 @@ import './styles/style.scss';
 /* Importing image */
 import UploadImage from '../images/icon-upload.png';
 import FileLogo from '../images/icon-line-resume.png';
-import footerLogo from '../images/PurpleSquirrel-Logo.png';
-import buttonGif from '../images/button-loader.gif';
 
 class Fileupload extends Component {
   constructor(props) {
@@ -23,7 +21,6 @@ class Fileupload extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
     this.onClose = this.onClose.bind(this);
-    this.onClosePopup = this.onClosePopup.bind(this);
   }
 
   /* On submit functin */
@@ -150,7 +147,12 @@ class Fileupload extends Component {
   }
 }
 
+function mapStateToProps(state) {
+    console.log("state", state);
+  // body...
+}
+
 export default reduxForm({
   'form': 'Fileuploadform',
-  'fields': upload
-})(Fileupload);
+  'fields': ['upload']
+}, mapStateToProps, null)(Fileupload);
