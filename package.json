@@ -1,18 +1,15 @@
 {
-  "name": "File Uploader",
+  "name": "file-uploader",
   "version": "1.0.0",
-  "description": "File uploading module",
+  "description": "file upload package",
   "main": "index.js",
-  "repository": "https://github.com/jsushank17/file-uploader",
+  "repository": "git@github.com:jsushank17/file-uploader.git",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
   },
-  "bugs": {
-    "url": "https://github.com/jsushank17/file-uploader/issues"
-  },
-  "author": "Sushank Jadhav",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.2.1",
@@ -20,7 +17,6 @@
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
     "chai": "^3.5.0",
-    "chai-jquery": "^2.0.0",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^0.14.7",
@@ -34,7 +30,6 @@
     "react-redux": "^4.0.0",
     "react-router": "^2.0.1",
     "redux": "^3.0.4",
-    "redux-form": "5.3.1",
+    "redux-form": "5.3.1"
   }
 }
-
