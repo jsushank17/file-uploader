@@ -43,10 +43,10 @@ class Fileupload extends Component {
         var id = setInterval(frame, 10);
         function frame() {
           if (width >= 100) {
-              clearInterval(id);
+            clearInterval(id);
           } else {
-              width++;
-              elem.style.width = width + '%';
+            width++;
+            elem.style.width = width + '%';
           }
 
           /* Purple Color background on progress complete */
@@ -82,14 +82,16 @@ class Fileupload extends Component {
   }
 
   render() {
-
     const {
       'fields': {
-        upload,
-        FirstName,
-        email
+        upload
       },
-      handleSubmit
+      handleSubmit,
+      initialFileImage,
+      uploadFileImage,
+      welcomeText,
+      loaderInitialColor,
+      loaderCompleteColor,
     } = this.props;
 
     /* File size manipulation*/
@@ -99,8 +101,8 @@ class Fileupload extends Component {
     : "" ;
 
     /* Variables for creating substring */
-    let stringFileName = upload.value && upload.value.length > 0 ? upload.value[0].name : 'Upload Your Resume';
-    let fileName = stringFileName.length > 18 ? stringFileName.substr(0, 18) + '...' : stringFileName;
+    let stringFileName = upload.value && upload.value.length > 0 ? upload.value[0].name : welcomeText;
+    let fileName = stringFileName.length > 18 ? `${stringFileName.substr(0, 18)}...` : stringFileName;
 
     return(
       <div>
@@ -109,8 +111,8 @@ class Fileupload extends Component {
             <div className="filewrap">
               {
                 upload.value && upload.value.length > 0 ?
-                <img src={FileLogo} alt="Upload Resume"/> :
-                <img src={UploadImage} alt="Upload Resume"/>
+                <img src={uploadFileImage} alt="Upload Resume"/> :
+                <img src={initialFileImage} alt="Upload Resume"/>
               }
               <span ref="resumeText" title={ stringFileName ? stringFileName : ''} className="file-text">{ fileName }</span>
               <p ref="resumeSize" className="file-size">{ fileSizeKB ? `(${fileSizeKB})` : "" }</p>
@@ -146,7 +148,9 @@ class Fileupload extends Component {
     );
   }
 }
+function validate(state) {
 
+}
 function mapStateToProps(state) {
   // body...
 }
