@@ -101,7 +101,6 @@ class Fileupload extends Component {
       loaderInitialColor,
       loaderCompleteColor,
     } = this.props;
-    console.log("props", this.props);
 
     /* File size manipulation*/
     let fileSizeKB;
@@ -150,7 +149,6 @@ class Fileupload extends Component {
             <div className="error-message">
               {upload.touched ? upload.error : ''}
             </div>
-            <div className="file-input-info"> Accepted file type: PDF.</div>
           </div>
         </form>
       </div>
@@ -176,11 +174,8 @@ Fileupload.propTypes = {
   'loaderCompleteColor': PropTypes.string
 }
 
-
-
-
 /* Validation for File upload on input change */
-function validate(values) {
+function validate(values, state) {
 
   /* Validation functions */
   /**
@@ -197,10 +192,10 @@ function validate(values) {
   }
 
   /* Function to validate files using type of file */
-  const validateFileGeneric = (errObj, fieldName, val, sizeLimit = 3000) => {
+  const validateFileGeneric = (errObj, fieldName, val, sizeLimit = state.fileSizeLimit) => {
 
     if(val && getFileSize(val) > sizeLimit) {
-      errObj[fieldName] = `File should not exceed 3MB.`;
+      errObj[fieldName] = `File size exceeding.`;
     }
   };
 
@@ -219,7 +214,7 @@ function validate(values) {
 
 /* Mapping states to props */
 function mapStateToProps(state) {
-  // body...
+  // Write Here
 }
 
 export default reduxForm({
