@@ -101,6 +101,7 @@ class Fileupload extends Component {
       loaderInitialColor,
       loaderCompleteColor,
     } = this.props;
+    console.log("props", this.props);
 
     /* File size manipulation*/
     let fileSizeKB;
@@ -175,6 +176,47 @@ Fileupload.propTypes = {
   'loaderCompleteColor': PropTypes.string
 }
 
+
+
+
+/* Validation for File upload on input change */
+function validate(values) {
+
+  /* Validation functions */
+  /**
+  * function to get file size in mb
+  * 1Kb = 1000Bytes
+  * 1Mb = 1000Kb
+  **/
+  function getFileSize(file) {
+    if(!file) {
+      return 0;
+    }
+
+    return Math.round(file.size / 1000);
+  }
+
+  /* Function to validate files using type of file */
+  const validateFileGeneric = (errObj, fieldName, val, sizeLimit = 3000) => {
+
+    if(val && getFileSize(val) > sizeLimit) {
+      errObj[fieldName] = `File should not exceed 3MB.`;
+    }
+  };
+
+  /* Creating Empty Error Object */
+  const errors = {};
+
+  /* Validation for file upload */
+  if(values.upload && values.upload[0]) {
+    validateFileGeneric(errors, 'upload', values.upload[0]);
+  } else {
+    errors.upload = 'Please upload your resume file.';
+  }
+
+  return errors;
+}
+
 /* Mapping states to props */
 function mapStateToProps(state) {
   // body...
@@ -182,5 +224,6 @@ function mapStateToProps(state) {
 
 export default reduxForm({
   'form': 'Fileuploadform',
-  'fields': ['upload']
+  'fields': ['upload'],
+  validate
 }, mapStateToProps, null)(Fileupload);
