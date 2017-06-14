@@ -16,9 +16,10 @@ class TestFileUploader extends Component {
         <Fileupload
           initialFileImage={UploadImage}
           uploadFileImage={FileLogo}
-          welcomeText="Upload your file"
+          welcomeText="Choose your file"
           loaderInitialColor="#000fff"
-          loaderCompleteColor="#000"
+          loaderCompleteColor="#cfcfcf"
+          fileSizeLimit="3000"
         />
       </div>
     );
