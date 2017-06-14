@@ -37,9 +37,17 @@ class Fileupload extends Component {
       'uploadImageStatus': true
     });
 
+    /* Making constants for progress bar color */
+    const {
+      loaderInitialColor,
+      loaderCompleteColor
+    } = this.props;
+
     setTimeout(
       function(){
         var elem = document.getElementById("progress-bar");
+        /* Setting Initial background color */
+        elem.style.backgroundColor = loaderInitialColor;
         var width = 1;
         var id = setInterval(frame, 10);
         function frame() {
@@ -50,10 +58,9 @@ class Fileupload extends Component {
             elem.style.width = width + '%';
           }
 
-          /* Purple Color background on progress complete */
+          /* Green color background on progress complete */
           if (elem.style.width === '100%') {
-            const progressBar = document.getElementById("progress-bar");
-            progressBar.className += " progress-complete";
+            elem.style.backgroundColor = loaderCompleteColor;
           }
         }
       },200
