@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 /* Redux Form Package */
 import {
@@ -148,9 +149,26 @@ class Fileupload extends Component {
     );
   }
 }
-function validate(state) {
 
+/* Setting Default Props */
+Fileupload.defaultProps = {
+  'initialFileImage': UploadImage,
+  'uploadFileImage': FileLogo,
+  'welcomeText': 'Upload Your File',
+  'loaderInitialColor': '#7176db',
+  'loaderCompleteColor': '#2cb79d'
 }
+
+/* Setting Types For Props */
+Fileupload.propTypes = {
+  'initialFileImage': PropTypes.string,
+  'uploadFileImage': PropTypes.string,
+  'welcomeText': PropTypes.string,
+  'loaderInitialColor': PropTypes.string,
+  'loaderCompleteColor': PropTypes.string
+}
+
+/* Mapping states to props */
 function mapStateToProps(state) {
   // body...
 }
