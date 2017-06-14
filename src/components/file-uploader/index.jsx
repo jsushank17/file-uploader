@@ -195,7 +195,7 @@ function validate(values, state) {
   const validateFileGeneric = (errObj, fieldName, val, sizeLimit = state.fileSizeLimit) => {
 
     if(val && getFileSize(val) > sizeLimit) {
-      errObj[fieldName] = `File size exceeding.`;
+      errObj[fieldName] = `File size exceeding ${state.fileSizeLimit / 1000}MB.`;
     }
   };
 
